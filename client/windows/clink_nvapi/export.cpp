@@ -1,4 +1,4 @@
-#include "../common/global.h"
+#include "common/global.h"
 #include "export.h"
 
 NVAPI_INTERFACE NvAPI_Initialize() {

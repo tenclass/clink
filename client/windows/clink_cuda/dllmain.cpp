@@ -1,4 +1,4 @@
-﻿#include "../common/global.h"
+﻿#include "common/global.h"
 #include "render.h"
 #include <cstdlib> 
 

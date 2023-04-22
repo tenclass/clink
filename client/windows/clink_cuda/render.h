@@ -1,5 +1,5 @@
 #pragma once
-#include "../common/global.h"
+#include "common/global.h"
 #include "socket.h"
 #include "export.h"
 #include "utilities.h"

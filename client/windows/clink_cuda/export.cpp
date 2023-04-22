@@ -1,4 +1,4 @@
-#include "../common/global.h"
+#include "common/global.h"
 #include "driver_api.h"
 #include "export.h"
 #include "render.h"

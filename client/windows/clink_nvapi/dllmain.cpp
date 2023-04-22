@@ -1,4 +1,4 @@
-﻿#include "../common/global.h"
+﻿#include "common/global.h"
 #include <windows.h>
 
 BOOL APIENTRY DllMain( HMODULE hModule,

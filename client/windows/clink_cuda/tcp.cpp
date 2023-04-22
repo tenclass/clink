@@ -1,4 +1,4 @@
-#include "../common/global.h"
+#include "common/global.h"
 #include "tcp.h"
 #include <boost/asio.hpp>
 #include <boost/asio/io_context.hpp>
