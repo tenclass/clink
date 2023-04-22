@@ -3,6 +3,8 @@
 #include "logger.h"
 #include "utilities.h"
 #include <cstring>
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 Cuda::Cuda(uint32_t version, uint64_t pid, uint64_t tid) {
   version_ = version;
@@ -598,6 +600,13 @@ void Cuda::DispatchCuMemcpy2D(CudaRequest* request, RenderResponse* response) {
       memcpy((char*)response->data.data() + h * copy->WidthInBytes, data_copy.data() + h * copy->dstPitch, copy->WidthInBytes);
     }
   }
+
+  // if (copy->dstMemoryType == CU_MEMORYTYPE_HOST) {
+  //   static int index = 0;
+  //   std::string file_name = "/tmp/output_" + std::to_string(index++) + ".exr";
+  //   cv::Mat image(copy->Height, copy->WidthInBytes / 4 / 4, CV_32FC4, response->data.data());
+  //   cv::imwrite(file_name, image);
+  // }
 }
 
 void Cuda::DispatchCuMemcpy3D(CudaRequest* request, RenderResponse* response) {
