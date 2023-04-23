@@ -4,7 +4,6 @@
 #include "utilities.h"
 #include <cstring>
 #include <opencv2/opencv.hpp>
-#include <opencv2/highgui/highgui.hpp>
 
 Cuda::Cuda(uint32_t version, uint64_t pid, uint64_t tid) {
   version_ = version;
@@ -474,6 +473,7 @@ void Cuda::DispatchCuTexRefSetFormat(CudaRequest* request, RenderResponse* respo
   CL_ASSERT(request->param_count == 3);
   response->header.size = 0;
   response->header.result = cuTexRefSetFormat((CUtexref)request->params[0], (CUarray_format)request->params[1], (int)request->params[2]);
+  CL_LOG("set texture ref=0x%lx format=%d", request->params[0], request->params[1]);
 }
 
 void Cuda::DispatchcuTexRefSetAddressMode(CudaRequest* request, RenderResponse* response) {
@@ -558,6 +558,7 @@ void Cuda::DispatchCuMemcpy2D(CudaRequest* request, RenderResponse* response) {
 
   std::string data_copy;
   if (copy->srcMemoryType == CU_MEMORYTYPE_HOST) {
+    CL_LOG("copy from guest=0x%lx to host=0x%lx", copy->srcHost, copy->dstDevice);
     CL_ASSERT(copy->dstMemoryType != CU_MEMORYTYPE_HOST); 
     response->header.size = 0;
     auto data = FIELD_OFFSET(copy);
@@ -572,6 +573,7 @@ void Cuda::DispatchCuMemcpy2D(CudaRequest* request, RenderResponse* response) {
       copy->srcHost = data_copy.data();
     }
   } else if (copy->dstMemoryType == CU_MEMORYTYPE_HOST) {
+    CL_LOG("copy from host=0x%lx to guest=0x%lx", copy->srcDevice, copy->dstHost);
     CL_ASSERT(copy->srcMemoryType != CU_MEMORYTYPE_HOST);
     response->header.size = copy->WidthInBytes * copy->Height;
     response->data.resize(response->header.size);
@@ -601,12 +603,9 @@ void Cuda::DispatchCuMemcpy2D(CudaRequest* request, RenderResponse* response) {
     }
   }
 
-  // if (copy->dstMemoryType == CU_MEMORYTYPE_HOST) {
-  //   static int index = 0;
-  //   std::string file_name = "/tmp/output_" + std::to_string(index++) + ".exr";
-  //   cv::Mat image(copy->Height, copy->WidthInBytes / 4 / 4, CV_32FC4, response->data.data());
-  //   cv::imwrite(file_name, image);
-  // }
+  if (copy->dstMemoryType == CU_MEMORYTYPE_HOST) {
+    ImageUtil::getInstance().SaveImage(copy->WidthInBytes / 4 / 4, copy->Height, CV_32FC4, (void*)response->data.data(), "/tmp/clink_out", ".exr");
+  }
 }
 
 void Cuda::DispatchCuMemcpy3D(CudaRequest* request, RenderResponse* response) {

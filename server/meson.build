@@ -24,7 +24,10 @@ clink_include = [
 clink_deps = [
   dependency('threads')
 ]
+
 clink_sources = []
+
+add_project_link_arguments(['-lstdc++fs'], language: 'cpp')
 
 subdir('utilities')
 subdir('render')

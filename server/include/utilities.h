@@ -27,4 +27,24 @@ public:
   std::string Decompress(std::string& data);
 };
 
+class ImageUtil {
+private:
+  ImageUtil();
+  ~ImageUtil();
+  
+  void Save(int width, int height, int type, void* data, std::string path);
+
+public:
+  static ImageUtil& getInstance() {
+    static ImageUtil instance;
+    return instance;
+  }
+
+  ImageUtil(const ImageUtil&) = delete;
+  ImageUtil& operator=(const ImageUtil&) = delete;
+
+  bool SaveImage(int width, int height, int type, void* data, std::string path);
+  std::string SaveImage(int width, int height, int type, void* data, std::string directory_path, std::string extension);
+};
+
 #endif
