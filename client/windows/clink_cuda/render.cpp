@@ -362,12 +362,13 @@ CUresult Render::PrepareRequest(RenderRequest* request) {
           request->header.size += (uint32_t)data.size();
           request->datas.emplace_back(std::move(data));
         } else {
-        for (size_t h = 0; h < copy->Height; h++) {
+          for (size_t h = 0; h < copy->Height; h++) {
           std::string_view data((char*)copy->srcHost + h * copy->srcPitch, copy->WidthInBytes);
             request->header.size += (uint32_t)data.size();
             request->datas.emplace_back(std::move(data));
           }
         }
+        CL_LOG("copy from cpu=0x%llx to gpu=0x%llx", copy->srcHost, copy->dstDevice);
       }
 
       if (copy->dstMemoryType != CU_MEMORYTYPE_HOST) {
@@ -576,6 +577,7 @@ CUresult Render::HandleResponse(RenderRequest* request, RenderResponse* response
         for (size_t h = 0; h < copy->Height; h++) {
           memcpy((char*)copy->dstHost + h * copy->dstPitch, response->data.data() + h * copy->WidthInBytes, copy->WidthInBytes);
         }
+        CL_LOG("copy from gpu=0x%llx to cpu=0x%llx", copy->srcDevice, copy->dstHost);
       }
       break;
     }
