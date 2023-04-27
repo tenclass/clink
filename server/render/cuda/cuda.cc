@@ -603,9 +603,9 @@ void Cuda::DispatchCuMemcpy2D(CudaRequest* request, RenderResponse* response) {
     }
   }
 
-  if (copy->dstMemoryType == CU_MEMORYTYPE_HOST) {
-    ImageUtil::getInstance().SaveImage(copy->WidthInBytes / 4 / 4, copy->Height, CV_32FC4, (void*)response->data.data(), "/tmp/clink_out", ".exr");
-  }
+  // if (copy->dstMemoryType == CU_MEMORYTYPE_HOST) {
+  //   ImageUtil::getInstance().SaveImage(copy->dstPitch / 4 / 4, copy->Height, CV_32FC4, (void*)copy->dstHost, "/tmp/clink_out", ".exr");
+  // }
 }
 
 void Cuda::DispatchCuMemcpy3D(CudaRequest* request, RenderResponse* response) {
