@@ -82,7 +82,7 @@
     <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
     <LibraryPath>D:\zstd\lib;$(SolutionDir)\common\libs;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir);D:\zstd\include;D:\boost\include\boost-1_81;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <OutDir>C:\Users\cair\AppData\Roaming\Maxon\Maxon Cinema 4D R23_E25F5236\plugins\c4doctane\Libs300_demo\</OutDir>
+    <OutDir>C:\Users\cair\AppData\Roaming\Maxon\Maxon Cinema 4D R23_DBA5903C\plugins\c4doctane\Libs300_demo\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

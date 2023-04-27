@@ -619,8 +619,7 @@ CUresult Render::HandleResponse(RenderRequest* request, RenderResponse* response
       if (iter == host_guest_memory_.end()) {
         CL_LOG("write host=%p size=%lld directly", host, response->data.size());
         memcpy(host, response->data.data(), response->data.size());
-      }
-      else {
+      } else {
         CL_LOG("write guest=%p host=%p size=%lld", iter->first, iter->second, response->data.size());
         memcpy(iter->second, response->data.data(), response->data.size());
       }
