@@ -26,7 +26,7 @@ Usage:
 ### Server side
 mkdir build && meson compile -c build
 
-Usage:
+Usage: 
 ./clink --port 9999 --net tcp --uuid 60fe43ab-6860-4317-88cc-968ee3c3f3ad
 
 ## Current Status
