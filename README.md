@@ -25,6 +25,7 @@ Usage:
 
 ### Server side
 mkdir build && meson compile -c build
+Tips: Cuda 12.1 or newer needs to be installed completely on the host
 
 Usage: 
 ./clink --port 9999 --net tcp --uuid 60fe43ab-6860-4317-88cc-968ee3c3f3ad
