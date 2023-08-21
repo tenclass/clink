@@ -7,7 +7,6 @@
 
 ## Screenshot
 <img src="./docs/client.png" width="960">
-
 <img src="./docs/server-2.png" width="960">
 <img src="./docs/server-1.png" width="960">
 
@@ -24,11 +23,11 @@ Usage:
 5. Put dlls into the path where the execute file exists(maybe it was loaded by other dll), then the dll would be loaded by the program automatically
 
 ### Server side
-mkdir build && meson compile -c build
+mkdir build && meson compile -c build<br>
 Tips: Cuda 12.1 or newer needs to be installed completely on the host
 
-Usage: 
-./clink --port 9999 --net tcp --uuid 60fe43ab-6860-4317-88cc-968ee3c3f3ad
+Usage:<br>
+`./clink --port 9999 --net tcp --uuid 60fe43ab-6860-4317-88cc-968ee3c3f3ad`
 
 ## Current Status
 1. We handled about 70 functions of cuda 12.1 driver api to make cinema4d oc-render work on any computer without nvidia graphics card
