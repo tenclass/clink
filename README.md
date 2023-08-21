@@ -6,10 +6,10 @@
 3. Handle render api on server side, pack the response up and send back to client
 
 ## Screenshot
-<img src="./docs/client.png" width="640">
+<img src="./docs/client.png" width="960">
 
-<img src="./docs/server-2.png" width="640">
-<img src="./docs/server-1.png" width="640">
+<img src="./docs/server-2.png" width="960">
+<img src="./docs/server-1.png" width="960">
 
 ## Compile & Run
 
