@@ -664,7 +664,6 @@ CUresult Render::Dispatch(uint32_t index, uint32_t count, ...) {
 
   // set cuda request params
   std::string params(sizeof(CudaRequest) + sizeof(uint64_t) * count, '\0');
-  params.resize(sizeof(CudaRequest) + sizeof(uint64_t) * count);
   auto cuda = (CudaRequest*)params.data();
   cuda->api_index = index;
   cuda->param_count = count;
