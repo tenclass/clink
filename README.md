@@ -1,6 +1,6 @@
 # Clink: A c/s render api transport
 
-PS: There is another project [Tensorlink](https://github.com/nvwacloud/tensorlink) that implements CUDA runtime, driver, BLAS, and DNN API hooks. 😁 You may be interested in this.
+# Try new edition at [Tensor Fusion](https://github.com/NexusGPU/tensor-fusion)
 
 ## Goal
 1. Transport render api request through network.
